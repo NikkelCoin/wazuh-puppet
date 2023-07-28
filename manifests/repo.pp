@@ -35,7 +35,7 @@ class wazuh::repo (
     }
     'Linux', 'RedHat', 'Suse' : {
         case $::os[name] {
-          /^(CentOS|RedHat|OracleLinux|Fedora|Amazon|AlmaLinux|SLES)$/: {
+          /^(CentOS|RedHat|OracleLinux|Fedora|Amazon|AlmaLinux|SLES|Rocky)$/: {
             if ( $::operatingsystemrelease =~ /^5.*/ ) {
               $baseurl  = 'https://packages.wazuh.com/4.x/yum/5/'
               $gpgkey   = 'http://packages.wazuh.com/key/GPG-KEY-WAZUH'
@@ -48,7 +48,7 @@ class wazuh::repo (
         }
         # Set up OSSEC repo
         case $::os[name] {
-          /^(CentOS|RedHat|OracleLinux|Fedora|Amazon|AlmaLinux)$/: {
+          /^(CentOS|RedHat|OracleLinux|Fedora|Amazon|AlmaLinux|Rocky)$/: {
             yumrepo { 'wazuh':
               descr    => 'WAZUH OSSEC Repository - www.wazuh.com',
               enabled  => true,
